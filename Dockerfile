@@ -17,7 +17,7 @@ RUN npm ci
 FROM base AS builder
 WORKDIR /usr/src/app
 COPY --from=deps /usr/src/app/node_modules ./node_modules
-COPY krampoline/ ./
+COPY . .
 RUN npm run build
 
 
@@ -33,9 +33,10 @@ RUN chown nextjs:nodejs .next
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY krampoline/public ./public
-COPY --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
-COPY --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
+COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
+
 
 USER nextjs
 
