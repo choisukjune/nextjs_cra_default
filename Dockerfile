@@ -17,7 +17,7 @@ RUN npm ci
 FROM base AS builder
 WORKDIR /usr/src/app
 COPY --from=deps /usr/src/app/node_modules ./node_modules
-COPY . .
+COPY krampoline/ .
 RUN npm run build
 
 
