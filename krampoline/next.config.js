@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   basePath: '/k63117c665263a',
+   basePath: '/ka1edac09a41da',
     output: 'standalone',
 }
 
