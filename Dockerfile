@@ -1,12 +1,28 @@
 # Build stage
-FROM krmp-d2hub-idock.9rum.cc/goorm/node:16
+FROM krmp-d2hub-idock.9rum.cc/goorm/node:16 AS base
+
+
+
+# Install dependencies only when needed
+FROM base AS deps
 WORKDIR /usr/src/app
+
+# Install dependencies based on the preferred package manager
 COPY krampoline/package*.json ./
 RUN npm ci
-COPY krampoline/node_modules ./node_modules
+
+
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /usr/src/app
+COPY --from=deps /app/node_modules ./node_modules
 COPY krampoline/ ./
 RUN npm run build
 
+
+FROM base AS runner
+WORKDIR /usr/src/app
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -18,8 +34,8 @@ RUN chown nextjs:nodejs .next
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY krampoline/public ./public
-COPY --chown=nextjs:nodejs ./.next/standalone ./
-COPY --chown=nextjs:nodejs ./.next/static ./.next/static
+COPY --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
+COPY --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
 
 USER nextjs
 
