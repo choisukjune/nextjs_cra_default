@@ -15,5 +15,6 @@ spec:
           - backend:
               serviceName: krampoline
               servicePort: 3000
-            path: /k63ebdb037a8fa(/|$)(.*)
+            # path: /k63ebdb037a8fa(/|$)(.*)
+            path: /k63ebdb037a8fa
             pathType: Prefix
