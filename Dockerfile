@@ -16,7 +16,7 @@ RUN chown nextjs:nodejs .next
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY /usr/src/app/public ./public
+COPY krampoline/public ./public
 COPY --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
 COPY --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
 
