@@ -16,7 +16,7 @@ RUN npm ci
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /usr/src/app
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY krampoline/ ./
 RUN npm run build
 
