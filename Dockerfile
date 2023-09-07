@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 COPY krampoline/package*.json ./
 RUN npm ci
 
-COPY /usr/src/app/node_modules ./node_modules
+COPY krampoline/node_modules ./node_modules
 COPY krampoline/ ./
 RUN npm run build
 
