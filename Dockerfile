@@ -3,8 +3,6 @@ FROM krmp-d2hub-idock.9rum.cc/goorm/node:16
 WORKDIR /usr/src/app
 COPY krampoline/package*.json ./
 RUN npm ci
-
-COPY krampoline/node_modules ./node_modules
 COPY krampoline/ ./
 RUN npm run build
 
