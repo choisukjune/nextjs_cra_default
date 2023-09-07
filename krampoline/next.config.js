@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   basePath: '/ka1edac09a41da',
+   basePath: '/kc89baecef849a',
+    assetPrefix: "/kc89baecef849a/",
     output: 'standalone',
 }
 
