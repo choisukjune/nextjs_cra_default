@@ -3,6 +3,7 @@ FROM krmp-d2hub-idock.9rum.cc/goorm/node:16
 WORKDIR /usr/src/app
 COPY krampoline/package*.json ./
 RUN npm ci
+COPY /usr/src/app/node_modules ./node_modules
 COPY krampoline/ ./
 RUN npm run build
 
@@ -17,8 +18,8 @@ RUN chown nextjs:nodejs .next
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY krampoline/public ./public
-COPY --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
-COPY --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
+COPY --chown=nextjs:nodejs ./.next/standalone ./
+COPY --chown=nextjs:nodejs ./.next/static ./.next/static
 
 USER nextjs
 
