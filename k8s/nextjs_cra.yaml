@@ -22,7 +22,7 @@ spec:
           - name: BASE_PATH
             valueFrom:
               configMapKeyRef:
-                 name: backend
+                 name: frontend
                  key: BASE_PATH
 ---
 apiVersion: v1
