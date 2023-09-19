@@ -17,7 +17,7 @@ async function ReaTest() {
   }
  
   return (
-      <h1>{JSON.stringify( res.json() );}</h1>
+      <h1>{JSON.stringify( res.json() )}</h1>
   )
 }
 
