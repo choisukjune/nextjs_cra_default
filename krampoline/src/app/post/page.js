@@ -7,7 +7,7 @@ const basePath = process.env.BASE_PATH || "";
 
 
 async function getData() {
-  const res = await fetch('https://user-app.krampoline.com/k6d6d1b8e4034a/backend/hello/hello-krampoline')
+  const res = await fetch('https://user-app.krampoline.com/k6d6d1b8e4034a/backend/hello/hello-krampoline-test')
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
  
