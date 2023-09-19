@@ -6,7 +6,7 @@ import Image from 'next/image'
 const basePath = process.env.BASE_PATH || "";
 
 
-async function getData() {
+async function ReaTest() {
   const res = await fetch('https://user-app.krampoline.com/k6d6d1b8e4034a/backend/hello/hello-krampoline-test')
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -16,13 +16,15 @@ async function getData() {
     throw new Error('Failed to fetch data')
   }
  
-  return JSON.stringify( res.json() );
+  return (
+      <h1>{JSON.stringify( res.json() );}</h1>
+  )
 }
 
 export default async function Home() {
   
   const data = await getData();
-    
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -50,9 +52,7 @@ export default async function Home() {
       <h2 className={`mb-3 text-4xl font-semibold`}>
             POST
       </h2>
-      <h2>
-      {data}
-      </h2>
+        <ReaTest/>
       <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing 
           <code className="font-mono font-bold">src/app/page.js</code>
