@@ -16,7 +16,7 @@ async function getData() {
     throw new Error('Failed to fetch data')
   }
  
-  return res.json()
+  return JSON.stringify( res.json() );
 }
 
 export default async function Home() {
