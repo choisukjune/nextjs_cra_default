@@ -6,21 +6,21 @@ import Image from 'next/image'
 const basePath = process.env.BASE_PATH || "";
 
 
-async function ReaTest() {
-  const res = await fetch('https://user-app.krampoline.com/k6d6d1b8e4034a/backend/hello/hello-krampoline-test')
+async function ResTest() {
+  const res = await fetch('https://user-app.krampoline.com/k06a207bc8b7fa/backend/hello/hello-krampoline-test')
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
- 
+  console.log( res.ok );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')
   }
-  var r = res.json()
- console.log( r );
+  var r = await res.json()
+  console.log(r)
   return (
       <>
       <h1>Request result : </h1>
-      <h3>{JSON.stringify( r )}</h3>
+      <h3>{r.message}</h3>
       </>
       
   )
@@ -55,7 +55,7 @@ export default async function Home() {
       <h2 className={`mb-3 text-4xl font-semibold`}>
             POST
       </h2>
-        <ReaTest/>
+        <ResTest/>
       <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing 
           <code className="font-mono font-bold">src/app/page.js</code>
