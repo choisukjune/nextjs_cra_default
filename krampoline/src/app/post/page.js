@@ -15,9 +15,14 @@ async function ReaTest() {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')
   }
- 
+  var r = res.json()
+ console.log( r );
   return (
-      <h1>{JSON.stringify( res.json() )}</h1>
+      <>
+      <h1>Request result : </h1>
+      <h3>{JSON.stringify( r )}</h3>
+      </>
+      
   )
 }
 
@@ -76,7 +81,7 @@ export default async function Home() {
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Docs{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt
+              ->
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
@@ -93,7 +98,7 @@ export default async function Home() {
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Learn{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt
+              ->
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
@@ -110,7 +115,7 @@ export default async function Home() {
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Templates{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt
+              ->
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
@@ -127,7 +132,7 @@ export default async function Home() {
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Deploy{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt
+              ->
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
