@@ -16,5 +16,5 @@ spec:
               serviceName: frontend
               servicePort: 3000
             # path: /k63ebdb037a8fa(/|$)(.*)
-            path: /k1980e3506835a
+            path: /
             pathType: Prefix
